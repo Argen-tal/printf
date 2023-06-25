@@ -1,16 +1,5 @@
 #include "main.h"
 
-/**
- * _printf - the function prints string literals to stdo.
- * @format: specific type of character to be printed.
- * % - Regular character, print it directly, and Print a literal '%'
- * case c - Print a character.
- * case s - Print a string.
- * case d and i - print a decimal integer.
- * default - Unknown conversion specifier, print it.
- * switch - checks for the appropriate format to be used
- * Return: number of characters printed
- */
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -30,43 +19,38 @@ int _printf(const char *format, ...)
 		else
 		{
 			i++; /* Skip the '%' */
+
+			/* Check for null format specifier */
+			if (format[i] == '\0')
+				return (-1);
+
+			/* Check the conversion specifier */
 			switch (format[i])
 			{
 				case 'c':
-				{
-					char ch = (char)va_arg(args, int);
-					if (ch == '\0')
-					{
-						count += _putchar('\\');
-						count += _putchar('0');
-					}
-					else
-					{
-						count += _putchar(ch);
-					}
-				}
-				break;
+					count += _putchar(va_arg(args, int));
+					break;
 				case 's':
-				{
-					char *str = va_arg(args, char *);
-					if (str == NULL)
-						str = "(null)"; /* Handle NULL strings */
-					count += _puts(str);
-				}
-				break;
+					{
+						char *str = va_arg(args, char *);
+						if (str == NULL)
+							str = "(null)"; /* Handle NULL strings */
+						count += _puts(str);
+					}
+					break;
 				case '%':
 					count += _putchar('%');
 					break;
 				case 'd':
 				case 'i':
-				{
-					int num = va_arg(args, int);
-					char buffer[BUFFER_SIZE];
-					int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
-					count += _puts(buffer);
-					count += length;
-				}
-				break;
+					{
+						int num = va_arg(args, int);
+						char buffer[BUFFER_SIZE];
+						int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
+						count += _puts(buffer);
+						count += length;
+					}
+					break;
 				default:
 					count += _putchar('%');
 					count += _putchar(format[i]);
