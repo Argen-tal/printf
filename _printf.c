@@ -1,35 +1,11 @@
-<<<<<<< HEAD
 #include "main.h"
 
 /**
  * _printf - the function prints string literals to stdo.
  * @format: specific type of character to be printed.
  *
- * Return: 0
+ * Return: nothing
  */
-=======
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-
-#define BUFFER_SIZE 1024
-
-int _putchar(char c)
-{
-    return write(1, &c, 1);
-}                                                                                        
-int _puts(char *str)
-{
-    int count = 0;
-    while (*str)
-    {
-        count += _putchar(*str);
-        str++;
-    }
-    return count;
-}
-
->>>>>>> 611ec37b66f5a6f006cbe6718f7a17fac1ecf8ad
 int _printf(const char *format, ...)
 {
     va_list args;
