@@ -36,7 +36,12 @@ int _printf(const char *format, ...)
 
                 case 's':
                     /* Print a string */
-                    count += _puts(va_arg(args, char *));
+                    {
+                        char *str = va_arg(args, char *);
+                        if (str == NULL)
+                            str = "(null)"; /* Handle NULL strings */
+                        count += _puts(str);
+                    }
                     break;
 
                 case '%':
