@@ -8,6 +8,7 @@
  * case s - Print a string.
  * case d and i - print a decimal integer.
  * default - Unknown conversion specifier, print it.
+ * switch - checks for the appropiate format to be used
  * Return: number of characters printed
  */
 int _printf(const char *format, ...)
@@ -29,8 +30,6 @@ int _printf(const char *format, ...)
         else
         {
             i++; /* Skip the '%' */
-
-            /* Check the conversion specifier */
             switch (format[i])
             {
                 case 'c':
@@ -50,11 +49,11 @@ int _printf(const char *format, ...)
                 case 'd':
 		case 'i':
 		    {
-        		int num = va_arg(args, int);
-        		char buffer[BUFFER_SIZE];
-        		int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
-        		count += _puts(buffer);
-        		count += length;
+        	    	int num = va_arg(args, int);
+                    	char buffer[BUFFER_SIZE];
+                    	int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
+                    	count += _puts(buffer);
+                    	count += length;
 		    }
 		    break;
                 default:
