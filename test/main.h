@@ -1,12 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
-#include <stddef.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
 
-#define BUFFER_SIZE 1024
+#include <stdarg.h>
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _puts(char *str);

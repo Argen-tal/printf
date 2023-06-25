@@ -1,11 +1,33 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
 
-/**
- * _printf - the function prints string literals to stdo.
- * @format: specific type of character to be printed.
- *
- * Return: 0
- */
+#define BUFFER_SIZE 1024
+
+int _putchar(char c);
+int _puts(char *str);
+int _printf(const char *format, ...);
+int print_binary(unsigned int num);
+int print_escaped_string(char *str);
+int print_reversed_string(char *str);
+int print_rot13_string(char *str);
+
+int _putchar(char c)
+{
+   return write(1, &c, 1);
+}
+
+int _puts(char *str)
+{
+    int count = 0;
+    while (*str)
+    {
+        count += _putchar(*str);
+        str++;
+    }
+    return count;
+}
+
 int _printf(const char *format, ...)
 {
     va_list args;
@@ -102,10 +124,47 @@ int _printf(const char *format, ...)
                 default:
                     /* Invalid conversion specifier, ignore */
                     break;
-			}
-		}
-	}
-	va_end(args);
+            }
+        }
+    }
 
-	return count;
+    va_end(args);
+    return count;
 }
+
+int print_binary(unsigned int num)
+{
+    int count = 0;
+    int i = 0;
+    int j;
+    char buffer[BUFFER_SIZE];
+
+    if (num == 0)
+    {
+        count += _putchar('0');
+    }
+    else
+    {
+        while (num > 0)
+        {
+            buffer[i++] = num % 2 + '0';
+            num /= 2;
+        }
+
+        for (j = i - 1; j >= 0; j--)
+        {
+            count += _putchar(buffer[j]);
+        }
+    }
+
+    return count;
+}
+
+int print_escaped_string(char *str)
+{
+    int count = 0;
+    while (*str)
+    {
+        if (*str < ' ' || *str >= 127)
+        {
+            /* Non-printable character, esc
