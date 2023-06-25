@@ -4,7 +4,7 @@
  * _printf - the function prints string literals to stdo.
  * @format: specific type of character to be printed.
  *
- * Return: nothing
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -33,6 +33,7 @@ int _printf(const char *format, ...)
                     /* Print a character */
                     count += _putchar(va_arg(args, int));
                     break;
+
                 case 's':
                     /* Print a string */
                     count += _puts(va_arg(args, char *));
@@ -41,7 +42,7 @@ int _printf(const char *format, ...)
                 case '%':
                     /* Print a literal '%' */
                     count += _putchar('%');
-break;
+                    break;
 
                 case 'd':
                 case 'i':
@@ -55,12 +56,14 @@ break;
                     break;
 
                 default:
-                    /* Invalid conversion specifier, ignore */
+                    /* Unknown conversion specifier, print it */
                     count += _putchar('%');
                     count += _putchar(format[i]);
                     break;
-			}
-		}
-	}
-	va_end(args);
+            }
+        }
+    }
+    va_end(args);
+    return count;
+}
 
