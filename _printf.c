@@ -19,7 +19,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -29,13 +28,9 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			i++; /* Skip the '%' */
-
-			/* Check for null format specifier */
+			i++;
 			if (format[i] == '\0')
 				return (-1);
-
-			/* Check the conversion specifier */
 			switch (format[i])
 			{
 				case 'c':
@@ -67,9 +62,8 @@ int _printf(const char *format, ...)
 					count += _putchar(format[i]);
 					break;
 			}
-		}
 	}
 	va_end(args);
 	return (count);
+	}
 }
-
