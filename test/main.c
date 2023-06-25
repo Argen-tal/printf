@@ -16,29 +16,62 @@ int main(void)
 
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
     ui = (unsigned int)INT_MAX + 1024;
     addr = (void *)0x7ffe637541f0;
-    _printf("Length:[%d, %i]\n", len, len);
-    printf("Length:[%d, %i]\n", len2, len2);
-    _printf("Negative:[%d]\n", -762534);
-    printf("Negative:[%d]\n", -762534);
-    _printf("Unsigned:[%u]\n", ui);
-    printf("Unsigned:[%u]\n", ui);
-    _printf("Unsigned octal:[%o]\n", ui);
-    printf("Unsigned octal:[%o]\n", ui);
-    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Character:[%c]\n", 'H');
-    printf("Character:[%c]\n", 'H');
-    _printf("String:[%s]\n", "I am a string !");
-    printf("String:[%s]\n", "I am a string !");
-    _printf("Address:[%p]\n", addr);
-    printf("Address:[%p]\n", addr);
-    len = _printf("Percent:[%%]\n");
-    len2 = printf("Percent:[%%]\n");
-    _printf("Len:[%d]\n", len);
-    printf("Len:[%d]\n", len2);
-    _printf("Unknown:[%r]\n");
-   printf("Unknown:[%r]\n");
+    
+    len = _printf("Length: %d\n", len);
+    len2 = printf("Length: %d\n", len2);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Negative numbers: %d, %d, %d\n", -762534, 0, -123456789);
+    len2 = printf("Negative numbers: %d, %d, %d\n", -762534, 0, -123456789);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Unsigned integers: %u, %u, %u\n", ui, 0, UINT_MAX);
+    len2 = printf("Unsigned integers: %u, %u, %u\n", ui, 0, UINT_MAX);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Unsigned octal: %o\n", ui);
+    len2 = printf("Unsigned octal: %o\n", ui);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Unsigned hexadecimal: %x, %X\n", ui, ui);
+    len2 = printf("Unsigned hexadecimal: %x, %X\n", ui, ui);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Characters: %c, %c, %c\n", 'H', 'e', 'y');
+    len2 = printf("Characters: %c, %c, %c\n", 'H', 'e', 'y');
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Strings: %s, %s\n", "Hello", "World!");
+    len2 = printf("Strings: %s, %s\n", "Hello", "World!");
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Addresses: %p, %p\n", addr, NULL);
+    len2 = printf("Addresses: %p, %p\n", addr, NULL);
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Percent: %%\n");
+    len2 = printf("Percent: %%\n");
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
+    len = _printf("Unknown specifier: %r\n");
+    len2 = _printf("Unknown specifier: %r\n");
+    printf("Expected: %d, Actual: %d\n", len2, len);
+    printf("\n");
+
     return (0);
 }
+
