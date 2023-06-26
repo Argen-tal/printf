@@ -16,8 +16,7 @@ int handle_format(char format, va_list args, int *count)
 
 		if (ch == '\0')
 		{
-			*count += _putchar('\\');
-			*count += _putchar('0');
+			*count += _putchar('\0');
 		}
 		else
 		{
@@ -27,8 +26,10 @@ int handle_format(char format, va_list args, int *count)
 	else if (format == 's')
 	{
 		char *str = va_arg(args, char *);
-
-		str = (str == NULL) ? "(null)" : str;
+		if (str == NULL)
+		{
+			str = "(null)";
+		}
 		*count += _puts(str);
 	}
 	else if (format == '%')
