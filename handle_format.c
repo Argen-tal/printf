@@ -26,6 +26,7 @@ int handle_format(char format, va_list args, int *count)
 	else if (format == 's')
 	{
 		char *str = va_arg(args, char *);
+
 		if (str == NULL)
 		{
 			str = "(null)";
