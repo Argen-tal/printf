@@ -1,0 +1,50 @@
+#include "main.h"
+
+/**
+ * handle_format - Handles the format specifier in _printf.
+ * @format: The format specifier character.
+ * @args: The va_list arguments.
+ * @count: Pointer to the count of characters printed.
+ *
+ * Return: The updated count of characters printed.
+ */
+int handle_format(char format, va_list args, int *count)
+{
+	if (format == 'c')
+	{
+		char ch = (char)va_arg(args, int);
+		if (ch == '\0')
+		{
+			*count += _putchar('\\');
+			*count += _putchar('0');
+		}
+		else
+		{
+			*count += _putchar(ch);
+		}
+	}
+	else if (format == 's')
+	{
+		char *str = va_arg(args, char *);
+		str = (str == NULL) ? "(null)" : str;
+		*count += _puts(str);
+	}
+	else if (format == '%')
+	{
+		*count += _putchar('%');
+	}
+	else if (format == 'd' || format == 'i')
+	{
+		int num = va_arg(args, int);
+		char buffer[BUFFER_SIZE];
+		int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
+		*count += (_puts(buffer) + length);
+	}
+	else
+	{
+		*count += (_putchar('%') + _putchar(format));
+	}
+
+	return *count;
+}
+
