@@ -16,5 +16,5 @@ int print_escaped_string(char *str);
 int print_reversed_string(char *str);
 int print_rot13_string(char *str);
 int handle_format(char format, va_list args, int *count);
-
+int handle_integers(char format, va_list args)
 #endif /* MAIN_H */
