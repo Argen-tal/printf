@@ -26,6 +26,10 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == '\0')
 				return (-1);
+			if (format[i] == 'd' || format[i] == 'i')
+			{
+			count += handle_integers(&format[i], args);
+			}
 
 			count = handle_format(format[i], args, &count);
 		}
