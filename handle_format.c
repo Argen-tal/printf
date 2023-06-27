@@ -10,6 +10,8 @@
  */
 int handle_format(char format, va_list args, int *count)
 {
+
+int i;
 	if (format == 'c')
 	{
 		char ch = (char)va_arg(args, int);
@@ -36,6 +38,23 @@ int handle_format(char format, va_list args, int *count)
 	else if (format == '%')
 	{
 		*count += _putchar('%');
+	}
+	else if (format == 'r')
+	{
+        char *str = va_arg(args, char *);
+
+        if (str == NULL)
+        {
+            str = "(null)";
+        }
+		
+        for (i = 0; str[i] != '\0'; i++)
+        {
+            *count += _putchar(str[i]);
+        }
+        for (i = i - 1; i >= 0; i--)
+	{
+            *count += _putchar(str[i]);
 	}
 	else
 	{
