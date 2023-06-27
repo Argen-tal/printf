@@ -37,13 +37,6 @@ int handle_format(char format, va_list args, int *count)
 	{
 		*count += _putchar('%');
 	}
-	else if (format == 'd' || format == 'i')
-	{
-		int num = va_arg(args, int);
-		char buffer[BUFFER_SIZE];
-		int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
-		*count += (_puts(buffer) + length);
-	}
 	else
 	{
 		*count += (_putchar('%') + _putchar(format));
@@ -51,4 +44,3 @@ int handle_format(char format, va_list args, int *count)
 
 	return (*count);
 }
-
