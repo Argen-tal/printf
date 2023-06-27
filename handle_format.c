@@ -39,23 +39,6 @@ int i;
 	{
 		*count += _putchar('%');
 	}
-	else if (format == 'r')
-	{
-        char *str = va_arg(args, char *);
-
-        if (str == NULL)
-        {
-            str = "(null)";
-        }
-		
-        for (i = 0; str[i] != '\0'; i++)
-        {
-            *count += _putchar(str[i]);
-        }
-        for (i = i - 1; i >= 0; i--)
-	{
-            *count += _putchar(str[i]);
-	}
 	else
 	{
 		*count += (_putchar('%') + _putchar(format));
