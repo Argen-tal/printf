@@ -33,9 +33,7 @@ int handle_format(char format, va_list args, int *count)
 	else if (format == 'd' || format == 'i')
 	{
 		int num = va_arg(args, int);
-
-		if (!handle_integer_special_cases(num, count))
-		*count += vfprintf(stdout, "%d", args);
+		*count += vprintf("%d", args);
 	}
 	else
 		*count += (_putchar('%') + _putchar(format));
