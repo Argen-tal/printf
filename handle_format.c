@@ -11,7 +11,6 @@
 int handle_format(char format, va_list args, int *count)
 {
 
-int i;
 	if (format == 'c')
 	{
 		char ch = (char)va_arg(args, int);
