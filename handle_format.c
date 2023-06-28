@@ -16,39 +16,30 @@ int handle_format(char format, va_list args, int *count)
 		char ch = (char)va_arg(args, int);
 
 		if (ch == '\0')
-		{
 			*count += _putchar('\0');
-		}
 		else
-		{
 			*count += _putchar(ch);
-		}
 	}
 	else if (format == 's')
 	{
 		char *str = va_arg(args, char *);
 
 		if (str == NULL)
-		{
 			str = "(null)";
-		}
 		*count += _puts(str);
 	}
 	else if (format == '%')
-	{
 		*count += _putchar('%');
-	}
 	else if (format == 'd' || format == 'i')
 	{
 		int num = va_arg(args, int);
 		char buffer[BUFFER_SIZE];
 		int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
+
 		count += (_puts(&buffer[BUFFER_SIZE - length]) + length);
 	}
 	else
-	{
 		*count += (_putchar('%') + _putchar(format));
-	}
 
 	return (*count);
 }
