@@ -4,7 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
-
+#include <limits.h>
 #define BUFFER_SIZE 1024
 
 int _printf(const char *format, ...);
@@ -15,5 +15,5 @@ int print_escaped_string(char *str);
 int print_reversed_string(char *str);
 int print_rot13_string(char *str);
 int handle_format(char format, va_list args, int *count);
-int handle_integers(const char *format, va_list args);
+int handle_integer_special_cases(int num, int *count);
 #endif /* MAIN_H */
