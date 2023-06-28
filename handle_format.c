@@ -42,7 +42,7 @@ int handle_format(char format, va_list args, int *count)
 		int num = va_arg(args, int);
 		char buffer[BUFFER_SIZE];
 		int length = snprintf(buffer, BUFFER_SIZE, "%d", num);
-		*count += (_puts(buffer) + length);
+		count += (_puts(&buffer[BUFFER_SIZE - length]) + length);
 	}
 	else
 	{
