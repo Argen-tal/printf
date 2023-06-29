@@ -31,9 +31,8 @@ int handle_format(char format, va_list args, int *count)
 	else if (format == '%')
 		*count += _putchar('%');
 	else if (format == 'd' || format == 'i')
-	{
-		int num = va_arg(args, int);
-		*count += vprintf("%d", args);
+	{	
+		*count += handle_integers(args, count);
 	}
 	else
 		*count += (_putchar('%') + _putchar(format));
